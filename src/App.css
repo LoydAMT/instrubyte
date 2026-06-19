@@ -1,0 +1,331 @@
+/* --- Global Reset & Color Palette --- */
+:root {
+  --primary-blue: #2e699b; /* Logo Blue */
+  --neutral-charcoal: #333333; /* For text */
+  --neutral-grey: #a0a0a0; /* Subtext */
+  --white: #ffffff;
+  --footer-dark: #222222;
+  --spacing-xs: 8px;
+  --spacing-s: 16px;
+  --spacing-m: 24px;
+  --spacing-l: 48px;
+  --spacing-xl: 96px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- THE FIX for the "weird box" ---
+   html/body/#root often keep a default margin or get constrained
+   by a parent width. Forcing full width + no margin here kills
+   any outer frame/gutter that was showing up around the page. */
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  color: var(--neutral-charcoal);
+  background-color: var(--white);
+  line-height: 1.6;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* --- Header & Navbar --- */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-s) var(--spacing-xl);
+  background-color: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+
+.header-logo {
+  max-height: 48px;
+  width: auto;
+}
+
+.navbar {
+  display: flex;
+  gap: var(--spacing-m);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--neutral-charcoal);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--primary-blue);
+}
+
+/* --- Main Content Layout --- */
+.main-content {
+  flex-grow: 1;
+  width: 100%;
+  padding: var(--spacing-l) var(--spacing-s);
+  max-width: 1400px; /* keeps super-wide screens from looking too stretched */
+  margin: 0 auto;
+}
+
+/* --- Typography Helpers --- */
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-l);
+  color: var(--neutral-charcoal);
+}
+
+.section-title-left {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: var(--spacing-s);
+  color: var(--neutral-charcoal);
+}
+
+.blue-text {
+  color: var(--primary-blue);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  text-align: center;
+  padding: var(--spacing-l) var(--spacing-s) var(--spacing-xl) var(--spacing-s);
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-l);
+  color: var(--neutral-charcoal);
+  word-wrap: break-word;
+}
+
+.primary-button {
+  background-color: var(--primary-blue);
+  color: var(--white);
+  border: none;
+  padding: var(--spacing-s) var(--spacing-m);
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.primary-button:hover {
+  background-color: #214d7a;
+}
+
+/* --- Key Services Section --- */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-m);
+  margin-bottom: var(--spacing-xl);
+}
+
+.service-card {
+  text-align: center;
+  padding: var(--spacing-m);
+  border: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.service-card:hover {
+  border-color: #f0f0f0;
+}
+
+.service-icon {
+  margin-bottom: var(--spacing-s);
+  display: flex;
+  justify-content: center;
+}
+
+.service-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: var(--neutral-charcoal);
+}
+
+.service-description {
+  font-size: 14px;
+  color: var(--neutral-charcoal);
+}
+
+/* --- About & Contact Grid --- */
+.about-contact-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-xl);
+  padding: 0 var(--spacing-m);
+  margin-bottom: var(--spacing-l);
+}
+
+.info-text {
+  font-size: 16px;
+  color: var(--neutral-charcoal);
+  line-height: 1.7;
+}
+
+/* --- Footer --- */
+.footer-container {
+  background-color: var(--footer-dark);
+  color: var(--white);
+  text-align: center;
+  padding: var(--spacing-s) 0;
+  width: 100%;
+}
+
+.footer-text {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* --- Responsive Adjustments --- */
+
+/* Tablets and Desktop */
+@media (min-width: 1024px) {
+  .main-content {
+    padding: var(--spacing-l) var(--spacing-xl);
+  }
+}
+
+/* Tablet range */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .header-container {
+    padding: var(--spacing-s) var(--spacing-l);
+  }
+
+  .hero-title {
+    font-size: 40px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-l);
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+  .header-container {
+    padding: var(--spacing-s) var(--spacing-m);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-s);
+  }
+
+  .logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Instead of hiding the nav entirely (no way to navigate!),
+     turn it into a horizontally scrollable row so links
+     stay reachable on small screens. */
+  .navbar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: var(--spacing-s);
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    font-size: 13px;
+  }
+
+  .main-content {
+    padding: var(--spacing-m) var(--spacing-s);
+  }
+
+  .hero-section {
+    padding: var(--spacing-m) 0 var(--spacing-l) 0;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    margin-bottom: var(--spacing-m);
+  }
+
+  .primary-button {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    margin-bottom: var(--spacing-m);
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-s);
+    margin-bottom: var(--spacing-l);
+  }
+
+  .about-contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-l);
+    padding: 0;
+  }
+
+  .section-title-left {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .info-text {
+    text-align: center;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+  }
+}
