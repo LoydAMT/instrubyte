@@ -143,26 +143,44 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        {/* About & Contact Grid */}
-        <section className="about-contact-grid">
-          <div id="why-us" className="info-block">
-            <h2 className="section-title-left">Why Choose InstruByte?</h2>
-            <ul className="features-list">
-              <li>10+ Years of Engineering Experience</li>
-              <li>Electrical, Instrumentation & Automation Specialists</li>
-              <li>PLC & SCADA Integration</li>
-              <li>Industrial Networking Solutions</li>
-              <li>Local and International Project Experience</li>
-              <li>End-to-End Engineering Support</li>
-            </ul>
+        {/* Why Choose Us Section */}
+        <section id="why-us" className="why-us-section">
+          <h2 className="section-title">Why Choose InstruByte?</h2>
+          <div className="why-us-grid">
+            <div className="why-us-card">
+              <h3 className="why-us-card-title">10+ Years of Experience</h3>
+              <p className="why-us-card-description">Our team brings over a decade of hands-on experience in electrical, instrumentation, and automation engineering.</p>
+            </div>
+            <div className="why-us-card">
+              <h3 className="why-us-card-title">Specialized Expertise</h3>
+              <p className="why-us-card-description">We are specialists in PLC & SCADA integration, industrial networking, and control panel design.</p>
+            </div>
+            <div className="why-us-card">
+              <h3 className="why-us-card-title">Global Project Experience</h3>
+              <p className="why-us-card-description">We have a proven track record of successful project delivery for both local and international clients.</p>
+            </div>
+            <div className="why-us-card">
+              <h3 className="why-us-card-title">End-to-End Support</h3>
+              <p className="why-us-card-description">From initial design to final commissioning and ongoing support, we provide comprehensive engineering services.</p>
+            </div>
           </div>
-          
-          <div id="contact" className="info-block contact-block">
-            <h2 className="section-title-left">Contact Us</h2>
-            <p className="info-text">
-              <strong>Email:</strong> info@instrubyte.com<br />
-              <strong>Phone:</strong> +819-833-4750
+        </section>
+        
+        {/* Contact Section */}
+        <section id="contact" className="contact-section">
+          <h2 className="section-title">Get in Touch</h2>
+          <div className="contact-content">
+            <p className="contact-text">
+              Have a project in mind or need expert advice? Reach out to us to discover how our engineering solutions can drive your success.
             </p>
+            <div className="contact-details">
+              <div className="contact-info-item">
+                <strong>Email:</strong> <a href="mailto:info@instrubyte.com" className="contact-link">info@instrubyte.com</a>
+              </div>
+              <div className="contact-info-item">
+                <strong>Phone:</strong> <a href="tel:+8198334750" className="contact-link">+819-833-4750</a>
+              </div>
+            </div>
           </div>
         </section>
       </main>
