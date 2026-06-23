@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
-import headerLogo from './assets/TAGINST.jpg';
+import headerLogo from './assets/TAGINST.jpg'; 
 
-// Simple types for our structure (Updated to use ReactNode for TS strictness)
 interface Service {
   id: number;
   icon: React.ReactNode;
@@ -15,74 +14,77 @@ const App: React.FC = () => {
     {
       id: 1,
       icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="48"
-          height="48"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#2E699B"
-          strokeWidth="1"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M11 21h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2z" />
-          <path d="M17 13m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-          <path d="M17 13v-5" />
-          <path d="M17 5v-1" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2E699B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
         </svg>
       ),
-      title: 'Control Systems',
-      description: 'Control systems, movement systems, with full control systems.',
+      title: 'Electrical Engineering',
+      description: 'Design and implementation of power distribution systems, motor control centers, cable routing, grounding systems, lighting, and electrical infrastructure.',
     },
     {
       id: 2,
       icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="48"
-          height="48"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#2E699B"
-          strokeWidth="1"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M17 19h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2z" />
-          <path d="M7 11l1 -1a1 1 0 0 1 1 0l1.5 1.5a1 1 0 0 0 1 0l3 -3a1 1 0 0 1 1 0l1 1" />
-          <path d="M7 11v6a1 1 0 0 0 1 1h8a1 1 0 0 0 1 -1v-3" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2E699B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
         </svg>
       ),
-      title: 'Circuit Design',
-      description: 'Design design measurements and circuit design.',
+      title: 'Instrumentation Engineering',
+      description: 'Design, installation, calibration, and commissioning of field instruments including pressure, temperature, flow, and level measurement systems.',
     },
     {
       id: 3,
       icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="48"
-          height="48"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#2E699B"
-          strokeWidth="1"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-          <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-          <path d="M16.5 7.5l-3 3" />
-          <path d="M7.5 7.5l3 3" />
-          <path d="M16.5 16.5l-3 -3" />
-          <path d="M7.5 16.5l3 -3" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2E699B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
         </svg>
       ),
       title: 'Industrial Automation',
-      description: 'Industrial: automation and tooling improvement.',
+      description: 'PLC, SCADA, HMI, VFD, and industrial communication systems integration for efficient process monitoring and control.',
     },
+    {
+      id: 4,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2E699B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="9" y1="3" x2="9" y2="21"></line>
+          <circle cx="14" cy="9" r="2"></circle>
+          <circle cx="14" cy="15" r="2"></circle>
+        </svg>
+      ),
+      title: 'Control Panel Design',
+      description: 'Design, fabrication, testing, and commissioning of PLC panels, marshalling panels, remote I/O panels, and motor control panels.',
+    },
+    {
+      id: 5,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2E699B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+        </svg>
+      ),
+      title: 'Industrial Networking',
+      description: 'Implementation of Profinet, Modbus, Profibus, Ethernet/IP, fiber optic networks, and IT-OT integration for smart and autonomous systems.',
+    },
+    {
+      id: 6,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2E699B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 9.36l-7.19 7.19a2 2 0 0 1-2.83-2.83l7.19-7.19a6 6 0 0 1 9.36-7.94l-3.76 3.76z"></path>
+        </svg>
+      ),
+      title: 'Commissioning & Support',
+      description: 'Site commissioning, troubleshooting, system optimization, FAT/SAT support, and remote technical assistance.',
+    }
   ];
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <div className="App">
@@ -92,8 +94,16 @@ const App: React.FC = () => {
           <img src={headerLogo} alt="InstruByte Logo" className="header-logo" />
         </div>
         <nav className="navbar">
-          {['HOME', 'SERVICES', 'PROJECTS', 'CONTACT'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="nav-link">
+          {['HOME', 'SERVICES', 'WHY US', 'CONTACT'].map((item) => (
+            <a
+              key={item}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(item.toLowerCase().replace(' ', '-'));
+              }}
+              href={`#${item.toLowerCase().replace(' ', '-')}`}
+              className="nav-link"
+            >
               {item}
             </a>
           ))}
@@ -105,10 +115,18 @@ const App: React.FC = () => {
         {/* Hero Section */}
         <section id="home" className="hero-section">
           <h1 className="hero-title">
-            POWERING YOUR PROJECTS WITH<br />
-            <span className="blue-text">SMART ELECTRICAL SOLUTIONS</span>
+            POWERING INDUSTRY THROUGH<br />
+            <span className="blue-text">ELECTRICAL, INSTRUMENTATION & AUTOMATION SOLUTIONS</span>
           </h1>
-          <button className="primary-button">DISCOVER OUR SERVICES</button>
+          <p className="hero-subtitle">
+            Delivering reliable engineering, design, integration, and commissioning services for industrial facilities, fuel terminals, airports, mining operations, water and waste water treatment plants, and process industries.
+          </p>
+          <button
+            className="primary-button"
+            onClick={() => scrollToSection('services')}
+          >
+            DISCOVER OUR SERVICES
+          </button>
         </section>
 
         {/* Services Section */}
@@ -127,19 +145,23 @@ const App: React.FC = () => {
 
         {/* About & Contact Grid */}
         <section className="about-contact-grid">
-          <div id="about" className="info-block">
-            <h2 className="section-title-left">About Us</h2>
-            <p className="info-text">
-              InstruByte is a simple-pagewebsite considering complete electrical
-              engineering services, with control systems, automation innovations and
-              mastering and solutions for s documentation reverids.
-            </p>
+          <div id="why-us" className="info-block">
+            <h2 className="section-title-left">Why Choose InstruByte?</h2>
+            <ul className="features-list">
+              <li>10+ Years of Engineering Experience</li>
+              <li>Electrical, Instrumentation & Automation Specialists</li>
+              <li>PLC & SCADA Integration</li>
+              <li>Industrial Networking Solutions</li>
+              <li>Local and International Project Experience</li>
+              <li>End-to-End Engineering Support</li>
+            </ul>
           </div>
-          <div id="contact" className="info-block">
+          
+          <div id="contact" className="info-block contact-block">
             <h2 className="section-title-left">Contact Us</h2>
             <p className="info-text">
-              Email info@instrubyte.com<br />
-              Info +819-833-4750
+              <strong>Email:</strong> info@instrubyte.com<br />
+              <strong>Phone:</strong> +819-833-4750
             </p>
           </div>
         </section>
