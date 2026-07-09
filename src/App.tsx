@@ -39,7 +39,7 @@ interface FormState {
 
 type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
 
-const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/khentlloyd3@gmail.com';
+const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/khentlloydcases@instrubyte.com.ph';
 
 const App: React.FC = () => {
   const services: Service[] = [
@@ -190,22 +190,22 @@ const App: React.FC = () => {
     setStatus('submitting');
 
     try {
+      const body = new FormData();
+      body.append('name', formData.name);
+      body.append('email', formData.email);
+      body.append('company', formData.company || 'Not provided');
+      body.append('service_needed', formData.service);
+      body.append('message', formData.message);
+      body.append('_subject', `New website inquiry from ${formData.name}`);
+      body.append('_template', 'table');
+      body.append('_captcha', 'false');
+
       const response = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company || 'Not provided',
-          service_needed: formData.service,
-          message: formData.message,
-          _subject: `New website inquiry from ${formData.name}`,
-          _template: 'table',
-          _captcha: 'false',
-        }),
+        body,
       });
 
       if (!response.ok) {
