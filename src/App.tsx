@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import './App.css';
 import { useReveal } from './useReveal';
+import { useActiveSection } from './useActiveSection';
 import headerLogo from './assets/TAGINST.jpg';
 import heroImage from './assets/hero-electrician.jpg';
 import teamImage from './assets/team-engineers.jpg';
 import robotArmImage from './assets/robot-arm.jpg';
 import industrialPlantImage from './assets/industrial-plant.jpg';
+
+const NAV_ITEMS = [
+  { id: 'home', label: 'HOME', dotLabel: 'Home' },
+  { id: 'services', label: 'SERVICES', dotLabel: 'Services' },
+  { id: 'industries', label: 'INDUSTRIES', dotLabel: 'Industries' },
+  { id: 'why-us', label: 'WHY US', dotLabel: 'Why Us' },
+  { id: 'contact', label: 'CONTACT', dotLabel: 'Contact' },
+];
+const NAV_IDS = NAV_ITEMS.map((item) => item.id);
 
 interface Service {
   id: number;
@@ -153,6 +163,8 @@ const App: React.FC = () => {
   const ctaReveal = useReveal<HTMLElement>();
   const contactReveal = useReveal<HTMLElement>();
 
+  const activeSection = useActiveSection(NAV_IDS);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -209,23 +221,26 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
+
       {/* Header */}
       <header className="header-container">
         <div className="logo-container">
           <img src={headerLogo} alt="InstruByte Logo" className="header-logo" />
         </div>
-        <nav className="navbar">
-          {['HOME', 'SERVICES', 'INDUSTRIES', 'WHY US', 'CONTACT'].map((item) => (
+        <nav className="navbar" aria-label="Primary">
+          {NAV_ITEMS.map((item) => (
             <a
-              key={item}
+              key={item.id}
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection(item.toLowerCase().replace(' ', '-'));
+                scrollToSection(item.id);
               }}
-              href={`#${item.toLowerCase().replace(' ', '-')}`}
-              className="nav-link"
+              href={`#${item.id}`}
+              className={`nav-link${activeSection === item.id ? ' active' : ''}`}
+              aria-current={activeSection === item.id ? 'true' : undefined}
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </nav>
@@ -234,8 +249,24 @@ const App: React.FC = () => {
         </button>
       </header>
 
+      {/* Side dot navigation */}
+      <nav className="dot-nav" aria-label="Section navigation">
+        {NAV_ITEMS.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            className={`dot-nav-item${activeSection === item.id ? ' active' : ''}`}
+            onClick={() => scrollToSection(item.id)}
+            aria-label={`Go to ${item.dotLabel} section`}
+            aria-current={activeSection === item.id ? 'true' : undefined}
+          >
+            <span className="dot-nav-label">{item.dotLabel}</span>
+          </button>
+        ))}
+      </nav>
+
       {/* Main Content */}
-      <main className="main-content">
+      <main id="main-content" className="main-content">
         {/* Hero Section */}
         <section id="home" className="hero-section">
           <div className="hero-grid">
