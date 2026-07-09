@@ -39,7 +39,8 @@ interface FormState {
 
 type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
 
-const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/khentlloydcases@instrubyte.com.ph';
+const CONTACT_ENDPOINT = 'https://api.web3forms.com/submit';
+const WEB3FORMS_ACCESS_KEY = 'cb97064f-30a7-4e9b-b4e4-6b038e7b0231';
 
 const App: React.FC = () => {
   const services: Service[] = [
@@ -191,14 +192,15 @@ const App: React.FC = () => {
 
     try {
       const body = new FormData();
+      body.append('access_key', WEB3FORMS_ACCESS_KEY);
+      body.append('subject', `New website inquiry from ${formData.name}`);
+      body.append('from_name', 'InstruByte Website');
+      body.append('replyto', formData.email);
       body.append('name', formData.name);
       body.append('email', formData.email);
       body.append('company', formData.company || 'Not provided');
       body.append('service_needed', formData.service);
       body.append('message', formData.message);
-      body.append('_subject', `New website inquiry from ${formData.name}`);
-      body.append('_template', 'table');
-      body.append('_captcha', 'false');
 
       const response = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
@@ -492,7 +494,7 @@ const App: React.FC = () => {
 
       {/* Footer */}
       <footer className="footer-container">
-        <p className="footer-text">&copy; 2024 InstruByte. All Rights Reserved.</p>
+        <p className="footer-text">&copy; 2025 InstruByte. All Rights Reserved.</p>
       </footer>
     </div>
   );
