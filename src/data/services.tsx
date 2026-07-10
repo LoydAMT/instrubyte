@@ -47,7 +47,7 @@ export const services: Service[] = [
       </svg>
     ),
     title: 'Control Panel Design',
-    description: 'Design, fabrication, testing, and commissioning of PLC panels, marshalling panels, remote I/O panels, and motor control panels.',
+    description: 'Design, fabrication, testings, and commissioning of PLC panels, marshalling panels, remote I/O panels, and motor control panels.',
   },
   {
     id: 5,
