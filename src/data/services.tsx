@@ -11,7 +11,7 @@ export const services: Service[] = [
       </svg>
     ),
     title: 'Electrical Engineering',
-    description: 'Design and implementation of power distribution systems, motor control centers, cable routing, grounding systems, lighting, and electrical infrastructure.',
+    description: 'Design and implementation of power distribution systems, motor control centers, cable routing, XLPE cable termination, grounding systems, lighting, and electrical infrastructure.',
   },
   {
     id: 2,
@@ -85,6 +85,7 @@ export const services: Service[] = [
       'Transformer Winding Resistance Tester',
       'Earth Resistance Tester',
       'Contact Resistance Tester',
+      'Insulation Resistance Tester',
     ],
   },
   {
