@@ -308,7 +308,7 @@ const App: React.FC = () => {
                 <span className="blue-text">ELECTRICAL, INSTRUMENTATION &amp; AUTOMATION SOLUTIONS</span>
               </h1>
               <p className="hero-subtitle">
-                Delivering reliable engineering, design, integration, and commissioning services for industrial facilities, fuel terminals, airports, mining operations, water and waste water treatment plants, and process industries.
+                Based in Cebu, delivering reliable electrical, instrumentation, and automation engineering services across the Philippines — for industrial facilities, fuel terminals, airports, mining operations, water and wastewater treatment plants, and process industries nationwide.
               </p>
               <div className="hero-actions">
                 <button className="primary-button" onClick={() => scrollToSection('services')}>
@@ -368,7 +368,7 @@ const App: React.FC = () => {
           <div className="industries-content">
             <h2 className="section-title section-title-light">Industries We Serve</h2>
             <p className="industries-text">
-              We deliver dependable engineering solutions across a wide range of critical infrastructure and industrial environments.
+              From our base in Cebu, we deliver dependable engineering solutions across the Philippines, serving critical infrastructure and industrial environments nationwide.
             </p>
             <div className="industry-tags">
               {industries.map((industry) => (
@@ -524,7 +524,7 @@ const App: React.FC = () => {
 
       {/* Footer */}
       <footer className="footer-container">
-        <p className="footer-text">&copy; 2025 InstruByte. All Rights Reserved.</p>
+        <p className="footer-text">&copy; 2025 InstruByte. All Rights Reserved. Based in Cebu, serving clients across the Philippines.</p>
       </footer>
     </div>
   );
