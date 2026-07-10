@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './App.css';
 import { useReveal } from './useReveal';
 import { useActiveSection } from './useActiveSection';
@@ -41,6 +41,9 @@ type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 const CONTACT_ENDPOINT = 'https://api.web3forms.com/submit';
 const WEB3FORMS_ACCESS_KEY = 'cb97064f-30a7-4e9b-b4e4-6b038e7b0231';
+const MIN_FILL_TIME_MS = 3000;
+const SUBMIT_COOLDOWN_MS = 60000;
+const RATE_LIMIT_STORAGE_KEY = 'instrubyte_last_submit';
 
 const App: React.FC = () => {
   const services: Service[] = [
@@ -157,6 +160,8 @@ const App: React.FC = () => {
     message: '',
   });
   const [status, setStatus] = useState<SubmitStatus>('idle');
+  const [errorMessage, setErrorMessage] = useState('Something went wrong. Please try again in a moment.');
+  const formLoadedAt = useRef(Date.now());
 
   const servicesReveal = useReveal<HTMLElement>();
   const industriesReveal = useReveal<HTMLElement>();
@@ -183,8 +188,30 @@ const App: React.FC = () => {
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const honeypot = (e.currentTarget.elements.namedItem('_honey') as HTMLInputElement | null)?.value;
-    if (honeypot) {
+    const fields = e.currentTarget.elements;
+    const honeypot = (fields.namedItem('_honey') as HTMLInputElement | null)?.value;
+    const botcheck = (fields.namedItem('botcheck') as HTMLInputElement | null)?.checked;
+
+    // Bot traps: pretend success without actually submitting, so bots don't learn to adapt.
+    if (honeypot || botcheck) {
+      setStatus('success');
+      setFormData({ name: '', email: '', company: '', service: serviceOptions[1], message: '' });
+      return;
+    }
+
+    if (Date.now() - formLoadedAt.current < MIN_FILL_TIME_MS) {
+      setStatus('success');
+      setFormData({ name: '', email: '', company: '', service: serviceOptions[1], message: '' });
+      return;
+    }
+
+    // Real rate limit: block rapid repeat submissions from the same browser.
+    const lastSubmit = Number(localStorage.getItem(RATE_LIMIT_STORAGE_KEY) || 0);
+    const msSinceLastSubmit = Date.now() - lastSubmit;
+    if (msSinceLastSubmit < SUBMIT_COOLDOWN_MS) {
+      const waitSeconds = Math.ceil((SUBMIT_COOLDOWN_MS - msSinceLastSubmit) / 1000);
+      setErrorMessage(`Please wait ${waitSeconds}s before sending another request.`);
+      setStatus('error');
       return;
     }
 
@@ -214,9 +241,11 @@ const App: React.FC = () => {
         throw new Error('Request failed');
       }
 
+      localStorage.setItem(RATE_LIMIT_STORAGE_KEY, Date.now().toString());
       setStatus('success');
       setFormData({ name: '', email: '', company: '', service: serviceOptions[1], message: '' });
     } catch {
+      setErrorMessage('Something went wrong. Please try again in a moment.');
       setStatus('error');
     }
   };
@@ -411,6 +440,7 @@ const App: React.FC = () => {
 
           <form className="contact-form" onSubmit={handleSubmit}>
             <input type="text" name="_honey" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+            <input type="checkbox" name="botcheck" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
             <div className="form-row">
               <div className="form-field">
@@ -485,7 +515,7 @@ const App: React.FC = () => {
             )}
             {status === 'error' && (
               <p className="form-status form-status-error" role="alert">
-                Something went wrong. Please try again in a moment.
+                {errorMessage}
               </p>
             )}
           </form>
