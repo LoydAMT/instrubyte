@@ -24,6 +24,13 @@ export interface GalleryPhoto {
   alt: string;
 }
 
+export interface IndustrySlide {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+}
+
 export interface WhyUsPoint {
   title: string;
   description: string;
