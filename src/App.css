@@ -1558,6 +1558,18 @@ textarea:focus-visible {
   .dot-nav {
     display: none;
   }
+  .hero-section::before {
+    top: -40px;
+    right: 0;
+    width: 240px;
+    height: 240px;
+  }
+  .hero-section::after {
+    bottom: -20px;
+    left: 0;
+    width: 200px;
+    height: 200px;
+  }
   .header-container {
     padding: var(--spacing-xs) var(--spacing-m);
     flex-direction: row;
