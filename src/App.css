@@ -310,6 +310,16 @@ textarea:focus-visible {
   box-shadow: 0 8px 20px rgba(46, 105, 155, 0.35);
 }
 
+.nav-panel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+}
+
+.mobile-menu-toggle {
+  display: none;
+}
+
 /* --- Main Content Layout --- */
 .main-content {
   flex-grow: 1;
@@ -1478,6 +1488,15 @@ textarea:focus-visible {
   }
 }
 
+/* Scroll-snap assumes one section ≈ one screen, which breaks down once content
+   reflows to stacked/single-column layouts below desktop widths — a section taller
+   than the viewport (e.g. the contact form) traps scrolling before reaching the footer. */
+@media (max-width: 1023px) {
+  html {
+    scroll-snap-type: none;
+  }
+}
+
 @media (max-width: 1023px) and (min-width: 769px) {
   .dot-nav {
     display: none;
@@ -1525,32 +1544,90 @@ textarea:focus-visible {
 
 @media (max-width: 768px) {
   :root {
-    --header-height: 210px;
+    --header-height: 72px;
   }
   .dot-nav {
     display: none;
   }
   .header-container {
-    padding: var(--spacing-s) var(--spacing-m);
-    flex-direction: column;
+    padding: var(--spacing-xs) var(--spacing-m);
+    flex-direction: row;
     align-items: center;
-    gap: var(--spacing-s);
+    justify-content: space-between;
+    position: relative;
   }
   .logo-container {
-    width: 100%;
     display: flex;
+  }
+  .header-logo {
+    max-height: 36px;
+  }
+  .mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  .mobile-menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--neutral-charcoal);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .mobile-menu-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .mobile-menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-menu-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .nav-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--white);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav-panel.open {
+    max-height: 420px;
   }
   .navbar {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    justify-content: center;
-    gap: var(--spacing-s);
-    flex-wrap: wrap;
+    gap: 0;
+  }
+  .nav-link {
+    padding: var(--spacing-s) var(--spacing-m);
+    width: 100%;
+  }
+  .nav-link::after {
+    display: none;
+  }
+  .nav-link.active {
+    background: rgba(46, 105, 155, 0.06);
   }
   .header-cta {
-    width: 100%;
-    max-width: 320px;
+    width: calc(100% - var(--spacing-m) * 2);
+    margin: var(--spacing-s) var(--spacing-m) var(--spacing-m);
   }
   .main-content {
     padding: var(--spacing-m) var(--spacing-s);
