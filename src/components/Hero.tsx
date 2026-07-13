@@ -1,6 +1,7 @@
 import React from 'react';
 import heroImage from '../assets/hero-electrician.jpg';
 import { stats } from '../data/stats';
+import { trackEvent } from '../utils/analytics';
 
 interface HeroProps {
   onNavigate: (sectionId: string) => void;
@@ -20,10 +21,22 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             Based in Cebu, delivering reliable electrical, instrumentation, and automation engineering services across the Philippines — for industrial facilities, fuel terminals, airports, mining operations, water and wastewater treatment plants, and process industries nationwide.
           </p>
           <div className="hero-actions">
-            <button className="primary-button" onClick={() => onNavigate('services')}>
+            <button
+              className="primary-button"
+              onClick={() => {
+                trackEvent('cta_click', { cta_location: 'hero', cta_label: 'Discover Our Services' });
+                onNavigate('services');
+              }}
+            >
               DISCOVER OUR SERVICES
             </button>
-            <button className="secondary-button" onClick={() => onNavigate('contact')}>
+            <button
+              className="secondary-button"
+              onClick={() => {
+                trackEvent('cta_click', { cta_location: 'hero', cta_label: 'Request a Quotation' });
+                onNavigate('contact');
+              }}
+            >
               REQUEST A QUOTATION
             </button>
           </div>

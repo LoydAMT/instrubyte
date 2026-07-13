@@ -1,6 +1,7 @@
 import React from 'react';
 import { useReveal } from '../useReveal';
 import robotArmImage from '../assets/robot-arm.jpg';
+import { trackEvent } from '../utils/analytics';
 
 interface CtaBandProps {
   onNavigate: (sectionId: string) => void;
@@ -21,7 +22,13 @@ const CtaBand: React.FC<CtaBandProps> = ({ onNavigate }) => {
         <p className="cta-text">
           Tell us about your requirements and our engineering team will get back to you with a tailored proposal.
         </p>
-        <button className="primary-button" onClick={() => onNavigate('contact')}>
+        <button
+          className="primary-button"
+          onClick={() => {
+            trackEvent('cta_click', { cta_location: 'cta_band', cta_label: 'Request a Quotation' });
+            onNavigate('contact');
+          }}
+        >
           REQUEST A QUOTATION
         </button>
       </div>

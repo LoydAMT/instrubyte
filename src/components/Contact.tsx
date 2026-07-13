@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useReveal } from '../useReveal';
 import { services } from '../data/services';
+import { trackEvent } from '../utils/analytics';
 import type { FormState, SubmitStatus } from '../types';
 
 const CONTACT_ENDPOINT = 'https://api.web3forms.com/submit';
@@ -89,6 +90,7 @@ const Contact: React.FC = () => {
       }
 
       localStorage.setItem(RATE_LIMIT_STORAGE_KEY, Date.now().toString());
+      trackEvent('generate_lead', { service_needed: formData.service });
       setStatus('success');
       setFormData({ name: '', email: '', company: '', service: serviceOptions[1], message: '' });
     } catch {

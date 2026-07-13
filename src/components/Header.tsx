@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import headerLogo from '../assets/TAGINST.jpg';
 import { NAV_ITEMS } from '../data/navigation';
+import { trackEvent } from '../utils/analytics';
 
 interface HeaderProps {
   activeSection: string;
@@ -51,7 +52,13 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onNavigate }) => {
             </a>
           ))}
         </nav>
-        <button className="header-cta" onClick={() => handleNavigate('contact')}>
+        <button
+          className="header-cta"
+          onClick={() => {
+            trackEvent('cta_click', { cta_location: 'header', cta_label: 'Request a Quote' });
+            handleNavigate('contact');
+          }}
+        >
           Request a Quote
         </button>
       </div>

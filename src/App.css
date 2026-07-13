@@ -1679,6 +1679,7 @@ textarea:focus-visible {
   }
   .hero-actions {
     flex-direction: column;
+    align-items: center;
   }
   .primary-button,
   .secondary-button {
