@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Supabase CLI local cache -- generated per-machine on link/deploy, holds
+# project ref/org id/pooler connection details that shouldn't be public.
+supabase/.temp/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
