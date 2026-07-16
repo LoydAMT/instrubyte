@@ -15,6 +15,7 @@ import WhyUs from './components/WhyUs';
 import CtaBand from './components/CtaBand';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ChatWidget from './components/ChatWidget';
 
 const App: React.FC = () => {
   const activeSection = useActiveSection(NAV_IDS);
@@ -40,6 +41,7 @@ const App: React.FC = () => {
       </main>
 
       <Footer />
+      <ChatWidget />
     </div>
   );
 };

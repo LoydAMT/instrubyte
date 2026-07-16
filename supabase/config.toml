@@ -1,0 +1,7 @@
+[functions.chat]
+# The new publishable/secret API key format isn't a JWT, so Supabase's built-in gateway
+# JWT check can't validate it -- the function does its own apikey check in code instead
+# (see supabase/functions/chat/keys.ts + index.ts). `supabase functions deploy chat`
+# picks this up automatically; --no-verify-jwt on the command line is redundant but kept
+# in the setup docs as a belt-and-suspenders fallback for older CLI versions.
+verify_jwt = false

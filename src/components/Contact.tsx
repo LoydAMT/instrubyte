@@ -4,8 +4,8 @@ import { services } from '../data/services';
 import { trackEvent } from '../utils/analytics';
 import type { FormState, SubmitStatus } from '../types';
 
-const CONTACT_ENDPOINT = 'https://api.web3forms.com/submit';
-const WEB3FORMS_ACCESS_KEY = 'cb97064f-30a7-4e9b-b4e4-6b038e7b0231';
+export const CONTACT_ENDPOINT = 'https://api.web3forms.com/submit';
+export const WEB3FORMS_ACCESS_KEY = 'cb97064f-30a7-4e9b-b4e4-6b038e7b0231';
 const MIN_FILL_TIME_MS = 3000;
 const SUBMIT_COOLDOWN_MS = 60000;
 const RATE_LIMIT_STORAGE_KEY = 'instrubyte_last_submit';

@@ -50,3 +50,23 @@ export interface FormState {
 }
 
 export type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
+
+export interface ChatImage {
+  mediaType: string;
+  data: string;
+}
+
+export interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+  images?: ChatImage[];
+}
+
+export interface ChatLeadSummary {
+  category?: string;
+  specs?: string;
+  contactName?: string;
+  contactEmail?: string;
+  contactCompany?: string;
+  urgencyNote?: string;
+}
